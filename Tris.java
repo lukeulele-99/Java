@@ -1,97 +1,106 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Tris {
-    // Campo di gioco (linee, divisione in matrice, Giocatore.move)
-    char[][] campo = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
-    // Giocatore (Nome)
-    String giocatore1 = "X";
-    String giocatore2 = "O";
+    String giocatore1;
+    String giocatore2;
+    char[][] griglia = new char[3][3];
 
-    /* public stampaCampo() {
-
-        return campo;
-
-    } */
-
-    // isVittoria();
-
-public void Turno (){
-    
-    for (char[] cs : campo) {
-        System.out.println("Turno" + cs);
+    public Tris() {
+        for (int i = 0; i < 3; i++) {
+            Arrays.fill(griglia[i], ' ');
+        }
     }
 
+    public boolean isValid(int riga, int colonna) {
+        return riga >= 0 && riga < 3 && colonna >= 0 && colonna < 3 && griglia[riga][colonna] == ' ';
+    }
 
-    
-}
+    public void stampaGriglia() {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(Arrays.toString(griglia[i]));
+        }
+    }
+
+    public boolean haVinto(char simbolo) {
+        for (int i = 0; i < 3; i++) {
+            if (griglia[i][0] == simbolo && griglia[i][1] == simbolo && griglia[i][2] == simbolo)
+                return true;
+            if (griglia[0][i] == simbolo && griglia[1][i] == simbolo && griglia[2][i] == simbolo)
+                return true;
+        }
+        if (griglia[0][0] == simbolo && griglia[1][1] == simbolo && griglia[2][2] == simbolo)
+            return true;
+        if (griglia[0][2] == simbolo && griglia[1][1] == simbolo && griglia[2][0] == simbolo)
+            return true;
+        return false;
+    }
+
+    public boolean isFull() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (griglia[i][j] == ' ')
+                    return false;
+            }
+        }
+        return true;
+    }
 
     public static void main(String[] args) {
-        System.out.println();
-
-        
-//
-
         Scanner sc = new Scanner(System.in);
-        System.out.println("Scrivi gioca per iniziare");
         Tris partita = new Tris();
-        String commando = sc.nextLine();
 
-        if (commando.equals("gioca")) {
+        System.out.println("Scrivi 'gioca' per iniziare");
+        String comando = sc.nextLine();
 
-            System.out.println("Inserisci il nome del giocatore1");
-            partita.giocatore1 = sc.nextLine();
-
-            System.out.println("Inserisci il nome del giocatore2");
-            partita.giocatore2 = sc.nextLine();
-
-        
-
-            System.out.println(partita.giocatore1 + " fai la tua mossa");
-
-            String mossa = sc.nextLine();
-
-            System.out.println(partita.giocatore2 + " fai la tua mossa");
-
+        if (!comando.equalsIgnoreCase("gioca")) {
+            System.out.println("Gioco non avviato.");
+            sc.close();
+            return;
         }
 
-        else {
+        System.out.println("Inserisci il nome del giocatore 1:");
+        partita.giocatore1 = sc.nextLine();
 
-            System.out.println(" Gioco non avviato");
+        System.out.println("Inserisci il nome del giocatore 2:");
+        partita.giocatore2 = sc.nextLine();
+
+        String currentPlayer = partita.giocatore1;
+        char simbolo = 'X';
+
+        while (true) {
+            System.out.println(currentPlayer + ", fai la tua mossa (riga colonna):");
+            int riga = sc.nextInt();
+            int colonna = sc.nextInt();
+            sc.nextLine();
+
+            if (!partita.isValid(riga, colonna)) {
+                System.out.println("Mossa non valida. Riprova.");
+                continue;
+            }
+
+            partita.griglia[riga][colonna] = simbolo;
+            partita.stampaGriglia();
+
+            if (partita.haVinto(simbolo)) {
+                System.out.println("Complimenti " + currentPlayer + ", hai vinto!");
+                break;
+            }
+
+            if (partita.isFull()) {
+                System.out.println("Pareggio!");
+                break;
+            }
+
+            if (currentPlayer.equals(partita.giocatore1)) {
+                currentPlayer = partita.giocatore2;
+                simbolo = 'O';
+            } else {
+                currentPlayer = partita.giocatore1;
+                simbolo = 'X';
+            }
         }
 
         sc.close();
-
     }
-
 }
-
-// MODELLI generali
-
-// AZIONI possibili
-// Digitare "Gioca" per entrare nella selezione giocatore
-// Scelta giocatore 1 (X) o giocatore 2 (O)
-// Inserire nome giocatore 1
-// System.out.println(" Inserisci il nome di giocatore1 ");
-// Inserire nome giocatore 2
-// System.out.println(" Inserisci il nome di giocatore2 ");
-// Stampiamo Campo di gioco con valori Clear
-// input Mossa nomegiocatore 1 (con rispettiva posizione di matrice)
-// si occupa lo slot del Campo
-// input Mossa nomegiocatore 2
-// si occupa lo slot del Campo
-// input mossa nomegiocatore 1
-// si occupa lo slot del Campo
-// input mossa nomegiocatore 2
-// si occupa lo slot del Campo
-// input mossa nomegiocatore 1
-// si occupa lo slot del Campo
-// verifica se nomegiocatore 1 ha vinto, else continue
-// input mossa nomegiocatore 2
-// verifica se nomegiocatore 2 ha vinto, else continue
-// avanti con le mosse fino a che il giocatore vince o pareggia
-// se vittoria, dichiara nomegiocatore con statement "Vittoria!"
-// else dichiara nomegiocatore "pareggio"
-// se nomegiocatore 1/2 vince 3 partite, allora "syso("nomegiocatore + "è
-// invincibile!")"
