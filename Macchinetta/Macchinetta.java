@@ -30,7 +30,7 @@ public class Macchinetta {
             sc.nextLine(); // pulizia buffer
 
             if (nome.equals(u.getNome()) && password == Integer.parseInt(u.getPassword())) {
-                m.mostraProdotti();
+
             } else {
                 System.out.println("Credenziali errate.");
             }
@@ -43,6 +43,7 @@ public class Macchinetta {
 
             if (idAdmin == 1000) {
                 System.out.println("Accesso Admin riuscito.");
+
 
             } else {
                 System.out.println("ID Admin errato.");
@@ -59,10 +60,26 @@ public class Macchinetta {
                     System.out.println(prodotto.getCodice() + " - " + prodotto.getNome());
                 }
             }
-            System.out.println(); // Separatore tra categorie
+            System.out.println();
+
         }
+
+
+    }
+
+    public void aggiungiProdotto(Scanner sc) {
+        System.out.println("Inserisci il nome del prodotto da aggiungere:");
+        String nome = sc.nextLine();
+        System.out.println("Inserisci la quantità da aggiungere:");
+        int quantita = Integer.parseInt(sc.nextLine());
+        System.out.println("Prodotto aggiunto: " + nome + " - Quantità: " + quantita);
+
     }
 }
+
+
+
+
 
 
 
