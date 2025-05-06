@@ -1,0 +1,2 @@
+public class Magazzino {
+}

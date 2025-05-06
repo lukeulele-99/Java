@@ -1,0 +1,71 @@
+PROCESSO ANALISI CODICE
+La console imposta/accende la macchinetta con un metodo isOn()
+
+        while macchinetta.isOn
+                sout("Accensione")
+                           La macchinetta chiede da input all'User se Admin o Utente
+                                        syso("Scrivi ADMIN per accedere al Backoffice, altrimenti scrivi UTENTE"
+
+                                            PER ADMIN
+                                            syso("Inserisci IdAdmin")
+                                            if (input.nextLine == idAdmin)
+                                            menuAdmin == true
+                                            while (menuAdmin != false) {
+                                            richiesta di accesso con dati Admin per entrare nel Backoffice (IdAdmin)
+                                            Apre BackOffice (menuAdmin)
+                                            L'Admin sceglie l'azione attraverso il numero corrispondente nell'elenco qui sotto
+                                            }
+                                            else {
+                                            sout("Inserisci credenziale nome")
+                                            sout("")
+                                            sout("Inserisci credenziale password")
+
+                                            if (input.nextLine == nomeUtente && input.nextLine == passwordUtente) {
+                                            menuUtente == true
+                                            while (menuUtente != false) {
+                                                sout(menuUtente)
+
+
+
+                                            }
+
+                                            }
+                                            }
+
+
+                                            }
+
+
+                                            (menuAdmin) 👽
+                                            avrà un menù di scelta tipo : "1.  Mostra tutti i prodotti (nome, qty, prezzo, tipoProdotto) "
+                                                                           - Definisco i prodotti per linee, con le lettere A,B,C,D
+                                                                           - Ogni linea sarà rappresentata dalla lettera
+                                                                           - Lettera A sarà per gli snack (fila 1,2,3,4)
+                                                                           - Lettera B sarà per le patatine (fila 5,6,7,8)
+                                                                           - Lettera C sarà per le bibite (fila 9,10,11,12)
+                                                                           - Lettera D sarà per caffè/the/cioccolata/cappuccio (fila 13,14,15,16)
+                                                                          "2.  Ricarica (con scelta se CASSA oppure PRODOTTO) "
+                                                                          "3.  Aggiungi (aggiungi(quantità + aggiunta)) "
+                                                                          "4.  Modifica Prodotto ( modifica nome e numeroFila)            "
+                                                                          "5.  Rimuovi  (stessa scelta sopra)   "
+                                                                          "6.  Torna indietro al menu principale "
+
+
+                                            PER UTENTE // richiesta dati Utente (Nome, Password)
+
+                                                                                         (menuUtente) 🤖
+                                            avrà un menù di scelta tipo : "1.  Compra (con scelta PRODOTTO)"
+                                                                               - Selezione (scelta prodotto es: A2)
+                                                                               - pagamento con contanti o carta
+                                                                               - inserimento qtà
+                                                                               - se carta, utente farà finta di avere un saldo carta nella macchinetta
+                                                                               - Y or N per accettare la transazione (sout "Proseguire?")
+                                                                               - La macchinetta dà il prodotto all'Utente e il resto in base all'importo inserito
+                                                                          "2.  Visualizza ultimo acquisto (nome, qtà, totalePagamento)"
+                                                                          "3.  Mostra carrello (nome, qty, prezzo, tipoProdotto")
+                                                                          "4.
+                                                                          "5.  Torna indietro al menu principale "
+
+
+
+
